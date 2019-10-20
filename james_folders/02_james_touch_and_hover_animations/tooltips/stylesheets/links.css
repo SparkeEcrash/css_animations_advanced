@@ -1,0 +1,47 @@
+/* Styles for the links */
+
+a {
+	color: #2F56B0;
+	border-bottom: .1em solid yellowgreen;
+	position: relative;
+	text-decoration: none;
+	transition: color .4s ease-out;
+}
+
+a::after {
+	border-radius: 1em;
+	border-top: .1em solid orangered;
+	content: "";
+	position: absolute;
+	right: 100%;
+	bottom: .14em;
+	left: 0;
+	transition: right .4s cubic-bezier(0,.5,0,1), border-color .4s ease-out;
+}
+
+a:hover {
+	color: #457DFB;
+	text-decoration: none;
+}
+
+a:hover::after {
+	border-color: #457DFB;
+	animation: anchor-underline 2s cubic-bezier(0,.5,0,1) infinite;
+}
+
+@keyframes anchor-underline {
+	/* animation doesn't change between 0% and 10% */
+	0%, 10% {
+		left: 0;
+		right: 100%;
+	}
+	/* animation happens during 10% and 40% and stays same until 60% */
+	40%, 60% {
+		left: 0;
+		right: 0;
+	}
+	90%, 100% {
+		left: 100%;
+		right: 0;
+	}
+}
